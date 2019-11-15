@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Report_Layout.Models.Trip>
+@{
+
+    ViewBag.Title = "Detail Report";
+
+}
+
+<h2>Detail Report</h2>
+<tr>
+    <th>
+        @Html.DisplayNameFor(model => model.TripNumber)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.DriverNumber)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.TruckNumber)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.DateDeparted)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.DateReturned)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.MilesDriven)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.GallonsPurchased)
+    </th>
+</tr>
+@{
+    foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TripNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DriverNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TruckNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDeparted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateReturned)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MilesDriven)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GallonsPurchased)
+        </td>
+    </tr>
+    }
+}
