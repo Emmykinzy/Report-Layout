@@ -1,7 +1,54 @@
-﻿
+﻿@model IEnumerable<Report_Layout.Models.Trip>
 @{
+
     ViewBag.Title = "Summary Report";
+    int count = 0;
+    double miles = 0;
+    double gallons = 0;
+    double taxes = 0;
 }
 
 <h2>Summary Report</h2>
+<table>
+    <tr>
+        <th>
+            @Html.Label("Number of Trips")
+        </th>
+        <th>
+            @Html.Label("Total Miles Driven")
+        </th>
+        <th>
+            @Html.Label("Total Gallons Purchased")
+        </th>
+        <th>
+            @Html.Label("Total Taxes Paid")
+        </th>
+    </tr>
+    @{
+        foreach (var item in Model)
+        {   
+            count = count + 1;
+            miles = miles + item.MilesDriven;
+            gallons = gallons + item.GallonsPurchased;
+            taxes = taxes + item.TaxesPaid;
+        }
 
+
+      }
+        
+
+        <tr>
+            <th>
+                @count
+            </th>
+            <th>
+                @miles
+            </th>
+            <th>
+                @gallons
+            </th>
+            <th>
+                @taxes
+            </th>
+        </tr>
+    </table>

@@ -5,6 +5,19 @@ using System.Web;
 
 namespace Report_Layout.Models
 {
+    public enum Except
+    {
+        Miles,
+        Gallons,
+        Depart,
+        Return
+    }
+
+    public enum Inequality
+    {
+        Greater_Than,
+        Less_Than,
+    }
     public class Trip
     {
         public string TruckNumber { get; set; }

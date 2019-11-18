@@ -22,49 +22,51 @@ namespace Report_Layout.Models
                 Trip temp = new Trip();
 
                 temp.DriverNumber = trip.DriverNumber;
-                temp.CoDriverNumber = trip.CoDriverNumber;
                 temp.TruckNumber = trip.TruckNumber;
                 temp.DateDeparted = trip.DateDeparted;
                 temp.DateReturned = trip.DateReturned;
                 temp.MilesDriven = trip.MilesDriven;
                 temp.GallonsPurchased = trip.GallonsPurchased;
-
+                temp.TripNumber = trip.TripNumber;
+               
                 detailReport.Add(temp);
             }
 
             return detailReport;
         }
 
-        public IEnumerable<Trip> GetExceptionReport(string exception, int value, bool GreaterThan)
+        public IEnumerable<Trip> GetExceptionReport(Except exception, Inequality inequality, string value)
         {
-                if(exception == "Miles")
+                if(exception == Except.Miles)
                 {
-                    if(GreaterThan)
+                     int val = Int32.Parse(value);
+                    if (inequality == Inequality.Greater_Than)
                     {
-                        return TripMilesGreaterThan(value);
+                        return TripMilesGreaterThan(val);
                     }
                     else
                     {
-                        return TripMilesLessThan(value);
+                        return TripMilesLessThan(val);
                     }
 
                 }
-                else if(exception == "Gallons")
+                else if(exception == Except.Gallons)
                 {
-                    if (GreaterThan)
+                    int val = Int32.Parse(value);
+                    if (inequality == Inequality.Greater_Than)
                     {
-                        return TripGallonsGreaterThan(value);
+                        return TripGallonsGreaterThan(val);
                     }
                     else
                     {
-                        return TripGallonsLessThan(value);
+                        return TripGallonsLessThan(val);
                     }
                 }
-                else if(exception == "Return")
+                else if(exception == Except.Return)
                 {
                     DateTime dt = DateTime.Parse(value.ToString());
 
-                    if (GreaterThan)
+                    if (inequality == Inequality.Greater_Than)
                     {
                         return TripReturnDateAfter(dt);
                     }
@@ -73,10 +75,10 @@ namespace Report_Layout.Models
                         return TripReturnDateBefore(dt);
                     }
                 }
-                else if(exception == "Depart")
+                else if(exception == Except.Depart)
                 {
                     DateTime dt = DateTime.Parse(value.ToString());
-                    if (GreaterThan)
+                    if (inequality == Inequality.Greater_Than)
                     {
                         return TripDepartDateAfter(dt);
                     }
@@ -94,7 +96,20 @@ namespace Report_Layout.Models
 
         public List<Trip> GetSummaryReport()
         {
-            return Database.tripList;
+            List<Trip> summary = new List<Trip>();
+            foreach (Trip trip in Database.tripList)
+            {
+                Trip temp = new Trip();
+
+                temp.MilesDriven = trip.MilesDriven;
+                temp.GallonsPurchased = trip.GallonsPurchased;
+                temp.TripNumber = trip.TripNumber;
+                temp.TaxesPaid = trip.TaxesPaid;
+
+                summary.Add(temp);
+            }
+
+            return summary;
         }
 
         public IEnumerable<Trip> TripMilesGreaterThan(int miles)
@@ -119,17 +134,17 @@ namespace Report_Layout.Models
 
         public IEnumerable<Trip> TripReturnDateBefore(DateTime date)
         {
-            return Database.tripList.Where(x => x.DateReturned >= date);
+            return Database.tripList.Where(x => x.DateReturned <= date);
         }
 
         public IEnumerable<Trip> TripReturnDateAfter(DateTime date)
         {
-            return Database.tripList.Where(x => x.DateReturned <= date);
+            return Database.tripList.Where(x => x.DateReturned >= date);
         }
 
         public IEnumerable<Trip> TripDepartDateBefore(DateTime date)
         {
-            return Database.tripList.Where(x => x.DateDeparted >= date);
+            return Database.tripList.Where(x => x.DateDeparted <= date);
         }
 
         public IEnumerable<Trip> TripDepartDateAfter(DateTime date)

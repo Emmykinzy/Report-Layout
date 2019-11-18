@@ -21,15 +21,32 @@ namespace Report_Layout.Controllers
             var detail = db.GetDetailReport();
             return View(detail);
         }
-
+        [HttpGet]
         public ActionResult ExceptionReport()
         {
             return View();
         }
 
-        public ActionResult SummaryReport()
+        [HttpPost]
+        public ActionResult ExceptionReport(FormCollection collection)
+        {
+            string val = collection["ExceptionValue"];
+            Except type = (Except)Enum.Parse(typeof(Except), collection["ExceptionType"]);
+            Inequality ineq = (Inequality)Enum.Parse(typeof(Inequality), collection["EqualityType"]);
+
+            ViewBag.date = true;
+            var execption = db.GetExceptionReport(type, ineq, val);
+            return View("ExceptionReportList", execption);
+        }
+
+        public ActionResult ExceptionReportList()
         {
             return View();
+        }
+        public ActionResult SummaryReport()
+        {
+            var summary = db.GetSummaryReport();
+            return View(summary);
         }
     }
 }

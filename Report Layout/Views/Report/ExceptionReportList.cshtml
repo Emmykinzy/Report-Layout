@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ExceptionReportList";
+}
+@model IEnumerable<Report_Layout.Models.Trip>
+<h2>Exception Report</h2>
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TripNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TruckNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDeparted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateReturned)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MilesDriven)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GallonsPurchased)
+        </th>
+    </tr>
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.TripNumber
+                </td>
+                <td>
+                    @item.DriverNumber
+                </td>
+                <td>
+                    @item.TruckNumber
+                </td>
+                <td>
+                    @item.DateDeparted.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.DateReturned.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.MilesDriven.ToString()
+                </td>
+                <td>
+                    @item.GallonsPurchased.ToString()
+                </td>
+            </tr>
+        }
+    }
+</table>

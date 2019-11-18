@@ -251,7 +251,8 @@
 </head>
 <body>
     <div class="testbox">
-        <form action="/">
+        @using (Html.BeginForm())
+        {
             <div class="banner">
                 <h1>Trip Journal Registration</h1>
             </div>
@@ -301,7 +302,7 @@
 
                 <div class="item">
                     <label for="receiptNum">Fuel Receipt Number<span>*</span></label>
-                    <input id="receiptNum" type="tel" name="receiptNum" maxlength="9" required />
+                    <input id="receiptNum" type="text" name="receiptNum" maxlength="9" required />
                 </div>
 
                 <div class="item">
@@ -312,83 +313,43 @@
 
                 <div class="item">
                     <label for="taxesPaid">Taxes Paid<span>*</span></label>
-                    <input id="taxesPaid" type="text" name="taxesPaid" step=".01" required />
+                    <input id="taxesPaid" type="number" name="taxesPaid" step=".01" required />
                 </div>
 
                 <div class="item">
                     <label for="stationName">Station Name<span>*</span></label>
-                    <input id="stationName" type="tel" name="stationName" maxlength="10" required />
+                    <input id="stationName" type="text" name="stationName" maxlength="10" required />
                 </div>
 
                 <div class="item">
                     <label for="stationLocation">Station Location<span>*</span></label>
-                    <input id="stationLocation" type="tel" name="stationLocation" maxlength="15" />
+                    <input id="stationLocation" type="text" name="stationLocation" maxlength="15" />
                 </div>
             </div>
 
-            <!--
+           
+           
+            /*@{
 
-                <div class="question">
-        <label>Membership Type</label>
-        <div class="question-answer">
-            <div>
-                <input type="radio" value="none" id="radio_1" name="type" />
-                <label for="radio_1" class="radio"><span>Standard</span></label>
-            </div>
-            <div>
-                <input type="radio" value="none" id="radio_2" name="type" />
-                <label for="radio_2" class="radio"><span>Premium</span></label>
-            </div>
-            <div>
-                <input type="radio" value="none" id="radio_3" name="type" />
-                <label for="radio_3" class="radio"><span>Ultimate</span></label>
-            </div>
-        </div>
-    </div>
-    <div class="question">
-        <label>Preferred way to contact </label>
-        <div class="question-answer">
-            <div>
-                <input type="radio" value="none" id="radio_4" name="contact" />
-                <label for="radio_4" class="radio"><span>Phone</span></label>
-            </div>
-            <div>
-                <input type="radio" value="none" id="radio_5" name="contact" />
-                <label for="radio_5" class="radio"><span>Email</span></label>
-            </div>
-            <div>
-                <input type="radio" value="none" id="radio_6" name="contact" />
-                <label for="radio_6" class="radio"><span>Any</span></label>
-            </div>
-        </div>
-    </div>
-
-                -->
-            <h2>Terms and Conditions</h2>
-            <input type="checkbox" name="checkbox1">
-            <label>You consent to receive communications from us electronically. We will communicate with you by e-mail or phone. You agree that all agreements, notices, disclosures and other communications that we provide to you electronically satisfy any legal requirement that such communications be in writing.</label>
-
-            @{
-
-                Trip trip = new Trip();
-                if (Session["trip"] != null)
-                {
-                    trip = (Trip)Session["trip"];
+            Trip trip = new Trip();
+            if (Session["trip"] != null)
+            {
+                trip = (Trip)Session["trip"];
                     <p>Session detected </p>
-                }
+            }
 
 
             }
             <p>
                 Test Here @trip.DriverNumber
-            </p>
+            </p>*/
 
-            <div class="btn-block">
-                <button type="submit" href="/">Submit</button>
+            <div>
+                <input type="submit" value="Submit" class="btn btn-default">
             </div>
-        </form>
+            }
 
-        <br />
+            <br />
 
 
 

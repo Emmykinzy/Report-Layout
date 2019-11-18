@@ -6,6 +6,7 @@
 }
 
 <h2>Detail Report</h2>
+<table>
 <tr>
     <th>
         @Html.DisplayNameFor(model => model.TripNumber)
@@ -34,26 +35,27 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.TripNumber)
+            @item.TripNumber
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DriverNumber)
+            @item.DriverNumber
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TruckNumber)
+            @item.TruckNumber
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateDeparted)
+            @item.DateDeparted.ToString("dd/MM/yyyy")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DateReturned)
+            @item.DateReturned.ToString("dd/MM/yyyy")
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MilesDriven)
+            @item.MilesDriven.ToString()
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.GallonsPurchased)
+            @item.GallonsPurchased.ToString()
         </td>
     </tr>
     }
 }
+</table>

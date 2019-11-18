@@ -1,7 +1,18 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Exception Report";
 }
+@using Report_Layout.Models
+@model Trip
 
 <h2>Exception Report</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownList("ExceptionType", new SelectList(Enum.GetValues(typeof(Except))), "Select Exception", new { @class = "form-control" })
+    @Html.DropDownList("EqualityType", new SelectList(Enum.GetValues(typeof(Inequality))), "Select Equality", new { @class = "form-control" })
+    @Html.TextBox("ExceptionValue", null, new { @class = "form-control" })
+    <input type="submit" value="Submit" class="btn btn-default">
+}
 
+
+
+   
