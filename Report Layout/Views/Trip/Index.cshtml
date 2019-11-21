@@ -26,23 +26,23 @@
     <tr>
         <td>
             <label for="truckNum"> Truck Number<span>*</span></label>
-            <input id="truckNum" type="text" name="truckNum" maxlength="4" required />
+            <input id="truckNum" type="text" name="truckNum"  pattern="^[a-zA-Z0-9]{1,4}$" maxlength="4" oninvalid="alert('Truck Number must not contain any special characters');" required />
         </td>
         <td>
             <label for="tripNum"> Trip Number<span>*</span></label>
-            <input id="tripNum" type="text" name="tripNum" maxlength="3" required />
+            <input id="tripNum" type="text" name="tripNum" pattern="^[a-zA-Z0-9]{1,3}$" maxlength="3" oninvalid="alert('Trip Number must not contain any special characters');" required />
         </td>
     </tr>
     <tr>
         <td>
             <label for="driverNum">Driver Number<span>*</span></label>
-            <input id="driverNum" type="text" name="driverNum" maxlength="9" required />
+            <input id="driverNum" type="text" name="driverNum" pattern="^[a-zA-Z0-9]{1,9}$" maxlength="9" oninvalid="alert('Driver Number must not contain any special characters');" required />
 
 
         </td>
         <td>
             <label for="co-driverNum">Co-Driver Number<span>*</span></label>
-            <input id="co-driverNum" type="text" name="co-driverNum" maxlength="9" required />
+            <input id="co-driverNum" type="text" name="co-driverNum" pattern="^[a-zA-Z0-9]{1,9}$" maxlength="9" oninvalid="alert('Co-Driver Number must not contain any special characters');"required />
         </td>
     </tr>
     <tr>
@@ -61,39 +61,39 @@
     <tr>
         <td>
             <label for="state">State Code<span>*</span></label>
-            <input id="state" type="text" name="state" maxlength="2" required />
+            <input id="state" type="text"  name="state" pattern="[A-Z]{2}"  oninvalid="alert('State Code must be 2 Uppercase letters');" required/>
         </td>
         <td>
             <label for="milesDriven">Miles Driven<span>*</span></label>
-            <input id="milesDriven" type="number" name="milesDriven" required />
+            <input id="milesDriven" name="milesDriven" type="number" pattern="^[0-9]{1,5}$" oninvalid="alert('Miles Driven must be a whole number with a maximum of 5 digits');" required />
         </td>
     </tr>
     <tr>
         <td>
             <label for="receiptNum">Fuel Receipt Number<span>*</span></label>
-            <input id="receiptNum" type="text" name="receiptNum" maxlength="9" required />
+            <input id="receiptNum" type="text" name="receiptNum" pattern="^[a-zA-Z0-9]{1,9}$" maxlength="9" oninvalid="alert('Fuel Receipt must not contain any special characters');"required />
         </td>
 
         <td>
             <label for="gallonsPurchased">Gallons Purchased<span>*</span></label>
-            <input id="gallonsPurchased" type="number" name="gallonsPurchased" step=".1" required />
+            <input id="gallonsPurchased" type="number" step=".1" name="gallonsPurchased" pattern="^\d*(\.\d{0,1})?$" oninvalid="alert('Gallons Purchased must be a positive number with no more than 1 decimal space');" required />
         </td>
     </tr>
     <tr>
         <td>
             <label for="taxesPaid">Taxes Paid<span>*</span></label>
-            <input id="taxesPaid" type="number" name="taxesPaid" step=".01" required />
+            <input id="taxesPaid" type="number" step=".01" name="taxesPaid" pattern="^\d*(\.\d{0,2})?$" oninvalid="alert('Taxes Paid must be a positive number with no more than 2 decimal spaces');" required />
         </td>
 
         <td>
             <label for="stationName">Station Name<span>*</span></label>
-            <input id="stationName" type="text" name="stationName" maxlength="10" required />
+            <input id="stationName" type="text" name="stationName" pattern="^[a-zA-Z0-9]{1,10}$" maxlength="10" oninvalid="alert('Station Name must not contain any special characters');" required />
         </td>
     </tr>
     <tr>
         <td>
             <label for="stationLocation">Station Location<span>*</span></label>
-            <input id="stationLocation" type="text" name="stationLocation" maxlength="15" />
+            <input id="stationLocation" type="text" name="stationLocation" pattern="^^[a-zA-Z0-9]{1,15}$" maxlength="15" oninvalid="alert('Station Location must not contain any special characters');"required/>
         </td>
         <td></td>
     </tr>

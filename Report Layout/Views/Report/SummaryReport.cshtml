@@ -2,56 +2,87 @@
 @{
 
     ViewBag.Title = "Summary Report";
-    int count = 0;
+    double count = 0;
     double miles = 0;
     double gallons = 0;
     double taxes = 0;
+    
+        foreach (var item in Model)
+        {
+            count = count + 1;
+            miles = miles + item.MilesDriven;
+            gallons = gallons + item.GallonsPurchased;
+            taxes = taxes + item.TaxesPaid;
+        }
+
+
+   
 }
     <div class="content">
         <div id="summary">
             <br />
             <h2>Summary Report</h2>
-            <table class="report">
+            <table class="summary">
                 <tr>
                     <th>
-                        @Html.Label("Number of Trips")
+                        @Html.Label("Number of Trips"):
                     </th>
-                    <th>
-                        @Html.Label("Total Miles Driven")
-                    </th>
-                    <th>
-                        @Html.Label("Total Gallons Purchased")
-                    </th>
-                    <th>
-                        @Html.Label("Total Taxes Paid")
-                    </th>
-                </tr>
-                @{
-                    foreach (var item in Model)
-                    {
-                        count = count + 1;
-                        miles = miles + item.MilesDriven;
-                        gallons = gallons + item.GallonsPurchased;
-                        taxes = taxes + item.TaxesPaid;
-                    }
-
-
-                }
-
-
-                <tr>
-                    <th>
+                    <td>
                         @count
-                    </th>
+                    </td>
+                </tr>
+                <tr>
                     <th>
-                        @miles
+                        @Html.Label("Total Miles Driven"):
                     </th>
+                    <td>
+                        @String.Format("{0:n0}", miles)
+
+                    </td>
+                </tr>
+                <tr>
                     <th>
-                        @gallons
+                        @Html.Label("Total Gallons Purchased"):
                     </th>
+                    <td>
+                        @String.Format("{0:n0}", gallons)
+                    </td>
+                </tr>
+                <tr>
                     <th>
-                        @taxes
+                        @Html.Label("Total Taxes Paid"):
                     </th>
+                    <td>
+                        @String.Format("{0:n0}", taxes)
+                    </td>
+                </tr>
+            </table>
+            <br /><br />
+            <table class="summary">
+                <tr>
+                    <th>
+                        @Html.Label("Average Miles Driven"):
+                    </th>
+                    <td>
+                        @String.Format("{0:n}", (miles / count))
+
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.Label("Average Gallons Purchased"):
+                    </th>
+                    <td>
+                        @String.Format("{0:n}", (gallons / count))
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        @Html.Label("Average Taxes Paid"):
+                    </th>
+                    <td>
+                        @String.Format("{0:n}", (taxes / count))
+                    </td>
                 </tr>
             </table>
         </div>
