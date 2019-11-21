@@ -36,6 +36,9 @@ namespace Report_Layout.Controllers
 
             ViewBag.date = true;
             var execption = db.GetExceptionReport(type, ineq, val);
+            TempData["val"] = val;
+            TempData["type"] = type;
+            TempData["ineq"] = ineq;
             return View("ExceptionReportList", execption);
         }
 

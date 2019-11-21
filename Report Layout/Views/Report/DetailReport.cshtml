@@ -4,58 +4,91 @@
     ViewBag.Title = "Detail Report";
 
 }
+    <div class="content">
+        <div id="detail"><br />
+            <h2>Detail Report</h2>
+            <table class="report">
+                <tr>
+                    <th>
+                        @Html.Label("Trip Number")
+                    </th>
+                    <th>
+                        @Html.Label("Driver Number")
+                    </th>
+                    <th>
+                        @Html.Label("Truck Number")
+                    </th>
+                    <th>
+                        @Html.Label("Date Departed")
+                    </th>
+                    <th>
+                        @Html.Label("Date Returned")
+                    </th>
+                    <th>
+                        @Html.Label("Miles Driven")
+                    </th>
+                    <th>
+                        @Html.Label("Gallons Purchased")
+                    </th>
+                    <th>
+                        @Html.Label("Location")
+                    </th>
+                    <th>
+                        @Html.Label("State Code")
+                    </th>
+                </tr>
+                @{
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.TripNumber
+                            </td>
+                            <td>
+                                @item.DriverNumber
+                            </td>
+                            <td>
+                                @item.TruckNumber
+                            </td>
+                            <td>
+                                @item.DateDeparted.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                @item.DateReturned.ToString("dd/MM/yyyy")
+                            </td>
+                            <td>
+                                @item.MilesDriven.ToString()
+                            </td>
+                            <td>
+                                @item.GallonsPurchased.ToString()
+                            </td>
+                            <td>
+                                @item.Location
+                            </td>
+                            <td>
+                                @item.StateCode
+                            </td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div><br /><br />
+        <input type="submit" onclick="Print('detail')" value="Print Report" class="btn btn-default">
+        <br />
+        <br />
+        <br />
+        <br />
+        @Html.ActionLink("Back", "Index", "Report")
+    </div>
+        <script>
+            function Print(id) {
+                var printContents = document.getElementById(id).innerHTML;
+                var originalContents = document.body.innerHTML;
 
-<h2>Detail Report</h2>
-<table>
-<tr>
-    <th>
-        @Html.DisplayNameFor(model => model.TripNumber)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.DriverNumber)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.TruckNumber)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.DateDeparted)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.DateReturned)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.MilesDriven)
-    </th>
-    <th>
-        @Html.DisplayNameFor(model => model.GallonsPurchased)
-    </th>
-</tr>
-@{
-    foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @item.TripNumber
-        </td>
-        <td>
-            @item.DriverNumber
-        </td>
-        <td>
-            @item.TruckNumber
-        </td>
-        <td>
-            @item.DateDeparted.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @item.DateReturned.ToString("dd/MM/yyyy")
-        </td>
-        <td>
-            @item.MilesDriven.ToString()
-        </td>
-        <td>
-            @item.GallonsPurchased.ToString()
-        </td>
-    </tr>
-    }
-}
-</table>
+                document.body.innerHTML = printContents;
+
+                window.print();
+
+                document.body.innerHTML = originalContents;
+            }
+        </script>

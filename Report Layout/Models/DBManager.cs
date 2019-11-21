@@ -28,6 +28,8 @@ namespace Report_Layout.Models
                 temp.MilesDriven = trip.MilesDriven;
                 temp.GallonsPurchased = trip.GallonsPurchased;
                 temp.TripNumber = trip.TripNumber;
+                temp.StateCode = trip.StateCode;
+                temp.Location = trip.Location;
                
                 detailReport.Add(temp);
             }
